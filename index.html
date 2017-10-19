@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container" ng-controller="firstController">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>产品编号</th>
+            <th>产品名称</th>
+            <th>购买数量</th>
+            <th>产品单价</th>
+            <th>产品总价</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in Product">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>
+                <button type="button" class="btn" ng-click="reduce($index)">-</button>
+                <input type="text" name="" value="" placeholder="" ng-model="item.num">
+                <button type="button" class="btn" ng-click="add($index)">+</button>
+            </td>
+            <td>{{item.price}}</td>
+            <td>{{item.num*item.price}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="remove($index)">移除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>总价格：{{totalPrice()}} 元</td>
+            <td colspan="4">总购买数：{{totalNum()}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" ng-click="removeall()">清空购物车</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="js/angular/angular.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
